@@ -29,7 +29,7 @@ export class HODDashboardComponent implements OnInit, OnDestroy{
     })
   
     this.staffServ.getStaffL().pipe(takeUntil(this.unsubscribe$)).subscribe((res)=>{
-      if(res.length == 0 ){
+      if(res.length === 0 ){
         this.noLeave = true
       }else{
         res.forEach(obj => {
@@ -49,14 +49,20 @@ export class HODDashboardComponent implements OnInit, OnDestroy{
       obj.ApBtn = "Approved"
       obj.status = 'Approved'
       this.clicked = true
-      this.HodServ.patchDta(obj)
+      this.HodServ.patchDta(obj).pipe(takeUntil(this.unsubscribe$)).subscribe((data:any)=>{
+        console.log(data)
+      })
     }
   }
+
   RejectClick(obj : any){
     if(obj){
       obj.RjBtn = "Rejected"
       obj.status = 'Rejected'
-      this.HodServ.patchDta(obj)
+      this.clicked = true
+      this.HodServ.patchDta(obj).pipe(takeUntil(this.unsubscribe$)).subscribe((data:any)=>{
+        console.log(data)
+      })
     }
   }
 

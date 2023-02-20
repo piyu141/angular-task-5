@@ -23,8 +23,8 @@ export class StaffService {
     }))
   }
 
-  postLeave(staff: any) {
-    return this.http.post(this.DataBaseUrl2, staff)
+  postLeave(staff : any) {
+   return this.http.post(this.DataBaseUrl2, staff)
   }
 
   getstaffObj() {
@@ -34,7 +34,6 @@ export class StaffService {
        Arr.push({ ...res[key], id: key })
       }
       return Arr
-
     }))
     return getdata
   }

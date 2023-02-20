@@ -80,7 +80,9 @@ export class StaffDashboardComponent implements OnInit,OnDestroy {
       ApBtn : "Approve",
       RjBtn : "Reject"
     }
-    this.staffServ.postLeave(LeaveObj)
+    this.staffServ.postLeave(LeaveObj).pipe(takeUntil(this.unsubscribe$)).subscribe((data : any)=>{
+      console.log(data)
+    })
     this.staffLeaveForm.reset()
 
   }

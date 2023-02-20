@@ -20,7 +20,7 @@ import { Injectable } from "@angular/core"
     console.log(obj)
     this.id = obj.id 
     console.log(obj.id)
-    this.http.patch('https://angular-task-5-8f34b-default-rtdb.asia-southeast1.firebasedatabase.app/leave/'+ obj.id +'.json',obj)
+   return this.http.patch('https://angular-task-5-8f34b-default-rtdb.asia-southeast1.firebasedatabase.app/leave/'+obj.id +'.json',obj)
   }
 
 }
