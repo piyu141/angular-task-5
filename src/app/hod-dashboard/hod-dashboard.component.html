@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<div class="apply" *ngIf="noLeave" >
+  <div>
+      <h4 class="text-danger">No leave request available</h4>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-xs-6 col-md-6 col-lg-4" *ngFor="let obj of arr">
+            <div class="card p-0 mb-3">
+                <div class="card-body p-2 mr-0">
+                <h2 class="mb-0">{{obj.fName | titlecase}} {{obj.lName | titlecase}}</h2>
+                <div *ngIf="obj.duration === 1">
+                  <p class="mb-1">Leave for {{obj.startDate | date: 'dd MMMM,yyyy'}}</p>
+                </div>
+                <div *ngIf="obj.duration > 1">
+                  <p class="mb-1">Leave from {{obj.startDate | date: 'dd MMMM'}} to {{obj.endDate | date: 'dd MMMM,yyyy'}}</p>
+                </div>
+                <p>Number of days {{obj.duration}}</p>
+                  <h3 class="text-bold m-0">Reason</h3>
+                  <p class="">{{obj.ReasonText}}</p>
+                  <div class="d-flex justify-content-around" *ngIf="obj.status ==='Pending'">
+                    <button class="btn btn-success px-4"  (click)="ApproveClick(obj)">{{obj.ApBtn}}</button>
+                  <button class="btn btn-danger px-4" (click)="RejectClick(obj)">{{obj.RjBtn}}</button>
+                  </div>
+                  <div *ngIf="obj.status === 'Approved'">
+                    <i class="fa fa-check fa-2x text-success mr-2"></i><span class="text-success d-inline-block  h6 mb-2">Approved</span>
+                  </div>
+                  <div *ngIf="obj.status === 'Rejected'">
+                    <i class="fa fa-check fa-2x text-danger mr-2"></i><span class="text-danger h6">Rejected</span>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+

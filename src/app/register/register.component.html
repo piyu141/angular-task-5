@@ -1,0 +1,114 @@
+<div class="col-sm-12  parent">
+    <div class="col-6 mx-auto border p-4 card">
+        <form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
+            <div class="form-row">
+                <div class="form-group col-sm-12 col-md-6">
+                    <mat-radio-group name="city" id="select" formControlName="post" class="d-block">
+                        <div *ngFor="let member of members" class="d-inline">
+                            <mat-radio-button class="d-inline radio-button"
+                                value="{{member}}">{{member}}</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class=" col-sm-12 col-md-6 form-group">
+                    <label for="fName">First Name</label>
+                    <input type="text" id="fName" class="form-control" formControlName="fName">
+                    <div *ngIf="formError.fName.invalid && (formError.fName.dirty || formError.fName.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formError.fName.errors.required">
+                            First name is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="lName">Last Name</label>
+                    <input type="text" id="lName" class="form-control" formControlName="lName">
+                    <div *ngIf="formError.lName.invalid && (formError.lName.dirty || formError.lName.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formError.lName.errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="formError.lName.errors.email">
+                            Invalid.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-12 form-group col-md-6">
+                    <label for="emailId">Email</label>
+                    <input type="text" id="emailId" class="form-control" formControlName="emailId">
+                    <div *ngIf="formError.emailId.invalid && (formError.emailId.dirty || formError.emailId.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formError.emailId.errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="formError.emailId.errors.email">
+                            Invalid.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 form-group col-md-6">
+                    <label for="contact">Contact</label>
+                    <input type="text" id="contact" class="form-control" formControlName="contact">
+                    <div *ngIf="formError.contact.invalid && (formError.contact.dirty || formError.contact.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formError.contact.errors.required">
+                            Conatact is required.
+                        </div>
+                        <div *ngIf="formError.contact.errors.email">
+                            Invalid.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-12 form-group col-md-6">
+                    <label for="select">Department</label>
+                    <select name="con" class="form-control" id="select" formControlName="department">
+                        <option value="" selected disabled hidden>Choose option</option>
+                        <option *ngFor="let department of depart" [value]="department">{{department}}</option>
+                    </select>
+                    <div *ngIf="formError.department.invalid && (formError.department.dirty || formError.department.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formError.department.errors.required">
+                            department is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-12 form-group col-md-6">
+                    <label for="userName">Username</label>
+                    <input type="userName" id="userName" class="form-control" formControlName="userName">
+                    <div *ngIf="formError.userName.invalid && (formError.userName.dirty || formError.userName.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formError.userName.errors.required">
+                            userName is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 form-group col-md-6">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" id="Password" formControlName="Password">
+                    <div *ngIf="formError.Password.invalid && (formError.Password.dirty || formError.Password.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formError.Password.errors.required">
+                            Password is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-2">
+                <button type="submit" class="btn-primary btn btn-block"
+                    [disabled]="registrationForm.invalid">Register</button>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <p>Already Registered?<a href="" class="ml-2" routerLink="/login">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+</div>

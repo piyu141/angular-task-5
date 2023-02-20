@@ -1,0 +1,9 @@
+.apply{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.card{
+    min-height: 222px;
+}  
